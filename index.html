@@ -9,16 +9,22 @@
 html,body{background:#0a0f1e;font-family:system-ui,sans-serif;color:#fff}
 body{display:flex;flex-direction:column;align-items:center}
 
-.hero{width:100%;background:#0a0f1e;border-bottom:1px solid rgba(255,255,255,.1);padding:14px 12px 12px;text-align:center;position:sticky;top:0;z-index:100}
-.hero-t{font-size:20px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#f5c518;margin-bottom:12px}
+.hero{width:100%;background:#0a0f1e;border-bottom:1px solid rgba(255,255,255,.1);padding:14px 12px 10px;text-align:center;position:sticky;top:0;z-index:100}
+.hero-t{font-size:20px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#f5c518;margin-bottom:0}
 
-.selector{display:flex;align-items:center;gap:8px;max-width:420px;margin:0 auto}
-.quick-tabs{display:flex;max-width:420px;margin:0 auto 10px;gap:6px;padding:0 4px}.qt{flex:1;padding:8px 0;text-align:center;cursor:pointer;font-size:14px;font-weight:700;color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.15);border-radius:8px;transition:all .2s}.qt.on{color:#fff;background:rgba(245,197,24,.12);border-color:#f5c518}.selector select{flex:1;background:#1a2540;color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:9px 12px;font-size:15px;font-weight:600;appearance:none;cursor:pointer;outline:none}
-.selector select:focus{border-color:#f5c518}
-.sel-arrow{color:#f5c518;font-size:18px;pointer-events:none;margin-left:-28px}
+.layout{display:flex;width:100%;max-width:900px;gap:0;align-items:flex-start;padding:12px 0 2rem}
+.sidebar{width:84px;flex-shrink:0;display:flex;flex-direction:column;gap:2px;padding:4px 2px;position:sticky;top:72px;max-height:calc(100vh - 80px);overflow-y:auto;scrollbar-width:none}
+.sidebar::-webkit-scrollbar{display:none}
+.stab{width:80px;min-height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);transition:all .15s;flex-shrink:0;padding:5px 4px}
+.stab:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
+.stab.on{background:rgba(245,197,24,.15);border-color:#f5c518}
+.stab .fn{font-size:10px;color:rgba(255,255,255,.6);text-align:center;line-height:1.3;word-break:break-word}
+.stab.on .fn{color:#f5c518;font-weight:600}
 
-.content{width:100%;display:flex;flex-direction:column;align-items:center;padding-bottom:2rem}
-.panel{display:none;flex-direction:column;align-items:center;padding:16px 12px 0;width:100%}
+.main-panel{flex:1;display:flex;flex-direction:column;align-items:center;padding:0 4px}
+
+.content{width:100%;display:flex;justify-content:center}
+.panel{display:none;flex-direction:column;align-items:center;padding:0;width:100%}
 .panel.on{display:flex}
 
 .team-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
@@ -59,62 +65,21 @@ body{display:flex;flex-direction:column;align-items:center}
 
 <div class="hero">
   <div class="hero-t">&#9917; Mundial FIFA 2026</div>
-  <div class="quick-tabs"><div class="qt on" onclick="show('nor')"><span>🇳🇴</span> Noruega</div><div class="qt" onclick="show('sen')"><span>🇸🇳</span> Senegal</div></div><div class="selector">
-    <select id="sel" onchange="show(this.value)">
-      <option value="usa">🇺🇸 Estados Unidos</option>
-      <option value="mex">🇲🇽 México</option>
-      <option value="can">🇨🇦 Canadá</option>
-      <option value="arg">🇦🇷 Argentina</option>
-      <option value="bra">🇧🇷 Brasil</option>
-      <option value="uru">🇺🇾 Uruguay</option>
-      <option value="col">🇨🇴 Colombia</option>
-      <option value="ecu">🇪🇨 Ecuador</option>
-      <option value="ven">🇻🇪 Venezuela</option>
-      <option value="par">🇵🇾 Paraguay</option>
-      <option value="chi">🇨🇱 Chile</option>
-      <option value="per">🇵🇪 Perú</option>
-      <option value="fra">🇫🇷 Francia</option>
-      <option value="esp">🇪🇸 España</option>
-      <option value="ing">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra</option>
-      <option value="ale">🇩🇪 Alemania</option>
-      <option value="por">🇵🇹 Portugal</option>
-      <option value="ned">🇳🇱 Países Bajos</option>
-      <option value="bel">🇧🇪 Bélgica</option>
-      <option value="cro">🇭🇷 Croacia</option>
-      <option value="sui">🇨🇭 Suiza</option>
-      <option value="aut">🇦🇹 Austria</option>
-      <option value="tur">🇹🇷 Turquía</option>
-      <option value="hun">🇭🇺 Hungría</option>
-      <option value="esq">🇸🇰 Eslovaquia</option>
-      <option value="sco">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Escocia</option>
-      <option value="nor">🇳🇴 Noruega</option>
-      <option value="mar">🇲🇦 Marruecos</option>
-      <option value="sen">🇸🇳 Senegal</option>
-      <option value="egy">🇪🇬 Egipto</option>
-      <option value="nga">🇳🇬 Nigeria</option>
-      <option value="civ">🇨🇮 Costa de Marfil</option>
-      <option value="cmr">🇨🇲 Camerún</option>
-      <option value="gha">🇬🇭 Ghana</option>
-      <option value="mli">🇲🇱 Malí</option>
-      <option value="tun">🇹🇳 Túnez</option>
-      <option value="jap">🇯🇵 Japón</option>
-      <option value="cor">🇰🇷 Corea del Sur</option>
-      <option value="ira">🇮🇷 Irán</option>
-      <option value="aus">🇦🇺 Australia</option>
-      <option value="nze">🇳🇿 Nueva Zelanda</option>
-      <option value="sau">🇸🇦 Arabia Saudita</option>
-      <option value="uzb">🇺🇿 Uzbekistán</option>
-      <option value="oma">🇴🇲 Omán</option>
-      <option value="pan">🇵🇦 Panamá</option>
-      <option value="cos">🇨🇷 Costa Rica</option>
-      <option value="jam">🇯🇲 Jamaica</option>
-      <option value="hon">🇭🇳 Honduras</option>
-    </select>
-    <span class="sel-arrow">&#8964;</span>
+  <div class="ley" style="justify-content:center;margin:6px 0 0">
+    <div class="ley-i"><div class="ley-d" style="background:#f5c518;border-color:#f5c518"></div>Estrella</div>
+    <div class="ley-i"><div class="ley-d" style="background:#4a5568"></div>Titular</div>
+    <div class="ley-i"><div class="ley-d" style="background:#d4901a;border-color:#d4901a"></div>Portero</div>
   </div>
+
 </div>
 
-<div class="content" id="content"></div>
+<div class="layout">
+  <div class="sidebar" id="sidebar-left"></div>
+  <div class="main-panel">
+    <div class="content" id="content"></div>
+  </div>
+  <div class="sidebar" id="sidebar-right"></div>
+</div>
 
 <script>
 const TEAMS = {
@@ -768,21 +733,81 @@ function buildPanel(code) {
     </div>`;
   }).join('');
 
-  return `<div class="ley">
-    <div class="ley-i"><div class="ley-d" style="background:#f5c518;border-color:#f5c518"></div>Estrella</div>
-    <div class="ley-i"><div class="ley-d" style="background:${t.out}"></div>Titular</div>
-    <div class="ley-i"><div class="ley-d" style="background:#d4901a;border-color:#d4901a"></div>Portero</div>
-  </div>
-  <div class="campo">${LINES_SVG}${players}</div>`;
+  return `<div class="campo">${LINES_SVG}${players}</div>`;
 }
 
+const COUNTRIES = [
+  {c:'ale',f:'🇩🇪',n:'Alemania'},
+  {c:'sau',f:'🇸🇦',n:'Arabia Saudita'},
+  {c:'arg',f:'🇦🇷',n:'Argentina'},
+  {c:'aus',f:'🇦🇺',n:'Australia'},
+  {c:'aut',f:'🇦🇹',n:'Austria'},
+  {c:'bel',f:'🇧🇪',n:'Bélgica'},
+  {c:'bra',f:'🇧🇷',n:'Brasil'},
+  {c:'cmr',f:'🇨🇲',n:'Camerún'},
+  {c:'can',f:'🇨🇦',n:'Canadá'},
+  {c:'chi',f:'🇨🇱',n:'Chile'},
+  {c:'col',f:'🇨🇴',n:'Colombia'},
+  {c:'cor',f:'🇰🇷',n:'Corea del Sur'},
+  {c:'cos',f:'🇨🇷',n:'Costa Rica'},
+  {c:'civ',f:'🇨🇮',n:'Costa de Marfil'},
+  {c:'cro',f:'🇭🇷',n:'Croacia'},
+  {c:'ecu',f:'🇪🇨',n:'Ecuador'},
+  {c:'egy',f:'🇪🇬',n:'Egipto'},
+  {c:'esq',f:'🇸🇰',n:'Eslovaquia'},
+  {c:'sco',f:'🏴󠁧󠁢󠁳󠁣󠁴󠁿',n:'Escocia'},
+  {c:'esp',f:'🇪🇸',n:'España'},
+  {c:'usa',f:'🇺🇸',n:'Estados Unidos'},
+  {c:'fra',f:'🇫🇷',n:'Francia'},
+  {c:'gha',f:'🇬🇭',n:'Ghana'},
+  {c:'hon',f:'🇭🇳',n:'Honduras'},
+  {c:'ned',f:'🇳🇱',n:'Países Bajos'},
+  {c:'ing',f:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',n:'Inglaterra'},
+  {c:'ira',f:'🇮🇷',n:'Irán'},
+  {c:'jam',f:'🇯🇲',n:'Jamaica'},
+  {c:'jap',f:'🇯🇵',n:'Japón'},
+  {c:'mli',f:'🇲🇱',n:'Malí'},
+  {c:'mar',f:'🇲🇦',n:'Marruecos'},
+  {c:'mex',f:'🇲🇽',n:'México'},
+  {c:'nga',f:'🇳🇬',n:'Nigeria'},
+  {c:'nor',f:'🇳🇴',n:'Noruega'},
+  {c:'nze',f:'🇳🇿',n:'Nueva Zelanda'},
+  {c:'oma',f:'🇴🇲',n:'Omán'},
+  {c:'pan',f:'🇵🇦',n:'Panamá'},
+  {c:'par',f:'🇵🇾',n:'Paraguay'},
+  {c:'per',f:'🇵🇪',n:'Perú'},
+  {c:'por',f:'🇵🇹',n:'Portugal'},
+  {c:'sen',f:'🇸🇳',n:'Senegal'},
+  {c:'sui',f:'🇨🇭',n:'Suiza'},
+  {c:'tun',f:'🇹🇳',n:'Túnez'},
+  {c:'tur',f:'🇹🇷',n:'Turquía'},
+  {c:'uru',f:'🇺🇾',n:'Uruguay'},
+  {c:'uzb',f:'🇺🇿',n:'Uzbekistán'},
+  {c:'ven',f:'🇻🇪',n:'Venezuela'},
+  {c:'hun',f:'🇭🇺',n:'Hungría'},
+];
+
+const half = Math.ceil(COUNTRIES.length / 2);
+const left = COUNTRIES.slice(0, half);
+const right = COUNTRIES.slice(half);
+
+function buildSidebar(id, list) {
+  const el = document.getElementById(id);
+  el.innerHTML = list.map(({c,f,n}) =>
+    `<div class="stab" id="stab-${c}" onclick="show('${c}')" title="${n}">
+      <div class="fn">${n}</div>
+    </div>`
+  ).join('');
+}
+
+buildSidebar('sidebar-left', left);
+buildSidebar('sidebar-right', right);
+
 function show(code) {
-  document.querySelectorAll(".qt").forEach(e=>e.classList.remove("on"));
-  const qt = document.querySelector(`.qt[onclick="show('"+code+"')"]`);
-  if(qt) qt.classList.add("on");
+  document.querySelectorAll('.stab').forEach(e=>e.classList.remove('on'));
+  const t = document.getElementById('stab-'+code);
+  if(t){ t.classList.add('on'); t.scrollIntoView({block:'nearest'}); }
   document.getElementById("content").innerHTML = buildPanel(code);
-  const sel = document.getElementById("sel");
-  if(sel) for(let o of sel.options) if(o.value===code){o.selected=true;break;}
 }
 
 show('usa');
