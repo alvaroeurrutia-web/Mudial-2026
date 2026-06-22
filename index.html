@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mundial FIFA 2026</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0a0f1e;font-family:system-ui,sans-serif}
+body{display:flex;flex-direction:column;align-items:center}
+
+.hero{width:100%;background:#0a0f1e;border-bottom:1px solid rgba(255,255,255,.1);padding:14px 0 0;text-align:center;position:sticky;top:0;z-index:100}
+.hero-t{font-size:22px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#f5c518;margin-bottom:12px}
+.tabs{display:flex;max-width:420px;margin:0 auto}
+.tab{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 0;cursor:pointer;font-size:15px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.4);border-bottom:3px solid transparent;transition:color .2s,border-color .2s}
+.tab.on{color:#fff;border-bottom-color:#f5c518}
+.flag{width:26px;height:17px;border-radius:3px;overflow:hidden;opacity:.5;transition:opacity .2s}
+.tab.on .flag{opacity:1}
+
+.content{width:100%;display:flex;flex-direction:column;align-items:center;padding-bottom:2rem}
+.panel{display:none;flex-direction:column;align-items:center;padding:16px 12px 0;width:100%}
+.panel.on{display:flex}
+
+.ley{display:flex;gap:16px;margin-bottom:12px;font-size:12px;color:rgba(255,255,255,.5)}
+.ley-i{display:flex;align-items:center;gap:5px}
+.ley-d{width:12px;height:12px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4)}
+
+.campo{position:relative;width:min(400px,96vw);aspect-ratio:68/105;border-radius:10px;overflow:hidden;background:#2a7d45}
+.campo::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(to bottom,transparent 0,transparent 49px,rgba(0,0,0,.1) 49px,rgba(0,0,0,.1) 98px);z-index:0}
+.campo svg.lines{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1}
+
+.j{position:absolute;transform:translate(-50%,-50%);text-align:center;z-index:10}
+.c{width:46px;height:46px;border-radius:50%;border:2px solid rgba(255,255,255,.6);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 3px}
+.est .c{width:54px;height:54px;background:#f5c518!important;border-color:#fff;box-shadow:0 0 14px rgba(245,197,24,.65)}
+.est .num{color:#1a1200!important}
+.est .edad{color:rgba(26,18,0,.7)!important}
+.num{font-size:14px;font-weight:700;color:#fff;line-height:1.1}
+.edad{font-size:9px;font-weight:600;color:rgba(255,255,255,.85);line-height:1}
+.jn{font-size:10px;font-weight:400;color:rgba(255,255,255,.8);white-space:nowrap;text-shadow:0 1px 3px #000;line-height:1.3}
+.ja{font-size:11px;font-weight:600;color:#fff;white-space:nowrap;text-shadow:0 1px 3px #000;line-height:1.2}
+.jc{font-size:9px;color:rgba(255,255,255,.55);white-space:nowrap;text-shadow:0 1px 2px #000}
+.si{font-size:9px;color:#f5c518;line-height:1;margin-bottom:1px}
+
+@media(max-width:380px){
+  .c{width:40px;height:40px}
+  .est .c{width:48px;height:48px}
+  .num{font-size:12px}
+  .ja{font-size:10px}
+  .jn,.jc{font-size:8.5px}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-t">&#9917; Mundial FIFA 2026</div>
+  <div class="tabs">
+    <div class="tab on" onclick="show('nor')">
+      <div class="flag">
+        <svg viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg">
+          <rect width="22" height="16" fill="#EF2B2D"/>
+          <rect x="6" width="3" height="16" fill="#fff"/>
+          <rect y="6" width="22" height="4" fill="#fff"/>
+          <rect x="7" width="1.5" height="16" fill="#003087"/>
+          <rect y="7" width="22" height="2" fill="#003087"/>
+        </svg>
+      </div>
+      Noruega
+    </div>
+    <div class="tab" onclick="show('sen')">
+      <div class="flag">
+        <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
+          <rect width="10" height="20" fill="#00853F"/>
+          <rect x="10" width="10" height="20" fill="#FDEF42"/>
+          <rect x="20" width="10" height="20" fill="#E31B23"/>
+          <polygon points="15,7 16.2,10.6 20,10.6 17,12.8 18.1,16.4 15,14.2 11.9,16.4 13,12.8 10,10.6 13.8,10.6" fill="#00853F"/>
+        </svg>
+      </div>
+      Senegal
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- NORUEGA -->
+  <div class="panel on" id="nor">
+    <div class="ley">
+      <div class="ley-i"><div class="ley-d" style="background:#f5c518;border-color:#f5c518"></div>Estrella</div>
+      <div class="ley-i"><div class="ley-d" style="background:#4a5568"></div>Titular</div>
+      <div class="ley-i"><div class="ley-d" style="background:#d4901a;border-color:#d4901a"></div>Portero</div>
+    </div>
+    <div class="campo">
+      <svg class="lines" viewBox="0 0 500 770" xmlns="http://www.w3.org/2000/svg">
+        <rect x="28" y="28" width="444" height="714" rx="4" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+        <line x1="28" y1="385" x2="472" y2="385" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+        <circle cx="250" cy="385" r="72" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+        <circle cx="250" cy="385" r="5" fill="rgba(255,255,255,.4)"/>
+        <rect x="108" y="28" width="284" height="122" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+        <rect x="172" y="28" width="156" height="56" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+        <rect x="108" y="620" width="284" height="122" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+        <rect x="172" y="686" width="156" height="56" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+        <rect x="204" y="736" width="92" height="26" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="2"/>
+        <rect x="204" y="8" width="92" height="26" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="2"/>
+        <path d="M128 620 A124 124 0 0 0 372 620" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/>
+        <path d="M128 150 A124 124 0 0 1 372 150" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/>
+      </svg>
+      <div class="j" style="left:50%;top:91%"><div class="c" style="background:#d4901a"><span class="num">1</span><span class="edad">35a</span></div><div class="jn">Ørjan</div><div class="ja">Nyland</div><div class="jc">Sevilla</div></div>
+      <div class="j" style="left:13%;top:74%"><div class="c" style="background:#4a5568"><span class="num">14</span><span class="edad">24a</span></div><div class="jn">Devyn</div><div class="ja">D. Wolfe</div><div class="jc">AZ Alkmaar</div></div>
+      <div class="j" style="left:37%;top:74%"><div class="c" style="background:#4a5568"><span class="num">4</span><span class="edad">26a</span></div><div class="jn">Leo</div><div class="ja">Østigård</div><div class="jc">Genoa</div></div>
+      <div class="j" style="left:63%;top:74%"><div class="c" style="background:#4a5568"><span class="num">17</span><span class="edad">27a</span></div><div class="jn">Vegar</div><div class="ja">Heggem</div><div class="jc">West Brom</div></div>
+      <div class="j" style="left:87%;top:74%"><div class="c" style="background:#4a5568"><span class="num">14*</span><span class="edad">28a</span></div><div class="jn">Julian</div><div class="ja">Ryerson</div><div class="jc">B. Dortmund</div></div>
+      <div class="j" style="left:13%;top:52%"><div class="c" style="background:#4a5568"><span class="num">11</span><span class="edad">21a</span></div><div class="jn">Antonio</div><div class="ja">Nusa</div><div class="jc">RB Leipzig</div></div>
+      <div class="j est" style="left:37%;top:52%"><div class="c"><span class="num">10</span><span class="edad">27a</span></div><div class="si">★★★</div><div class="jn">Martin</div><div class="ja">Ødegaard</div><div class="jc">Arsenal</div></div>
+      <div class="j" style="left:63%;top:52%"><div class="c" style="background:#4a5568"><span class="num">8</span><span class="edad">28a</span></div><div class="jn">Sander</div><div class="ja">Berge</div><div class="jc">Fulham</div></div>
+      <div class="j" style="left:87%;top:52%"><div class="c" style="background:#4a5568"><span class="num">20</span><span class="edad">22a</span></div><div class="jn">Oscar</div><div class="ja">Bobb</div><div class="jc">Fulham</div></div>
+      <div class="j est" style="left:33%;top:28%"><div class="c"><span class="num">9</span><span class="edad">25a</span></div><div class="si">★★★</div><div class="jn">Erling</div><div class="ja">Haaland</div><div class="jc">Man City</div></div>
+      <div class="j est" style="left:67%;top:28%"><div class="c"><span class="num">7</span><span class="edad">30a</span></div><div class="si">★★★</div><div class="jn">Alexander</div><div class="ja">Sørloth</div><div class="jc">Atlético</div></div>
+    </div>
+  </div>
+
+  <!-- SENEGAL -->
+  <div class="panel" id="sen">
+    <div class="ley">
+      <div class="ley-i"><div class="ley-d" style="background:#f5c518;border-color:#f5c518"></div>Estrella</div>
+      <div class="ley-i"><div class="ley-d" style="background:#2a5c8a"></div>Titular</div>
+      <div class="ley-i"><div class="ley-d" style="background:#d4901a;border-color:#d4901a"></div>Portero</div>
+    </div>
+    <div class="campo">
+      <svg class="lines" viewBox="0 0 500 770" xmlns="http://www.w3.org/2000/svg">
+        <rect x="28" y="28" width="444" height="714" rx="4" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+        <line x1="28" y1="385" x2="472" y2="385" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+        <circle cx="250" cy="385" r="72" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+        <circle cx="250" cy="385" r="5" fill="rgba(255,255,255,.4)"/>
+        <rect x="108" y="28" width="284" height="122" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+        <rect x="172" y="28" width="156" height="56" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+        <rect x="108" y="620" width="284" height="122" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+        <rect x="172" y="686" width="156" height="56" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+        <rect x="204" y="736" width="92" height="26" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="2"/>
+        <rect x="204" y="8" width="92" height="26" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="2"/>
+        <path d="M128 620 A124 124 0 0 0 372 620" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/>
+        <path d="M128 150 A124 124 0 0 1 372 150" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/>
+      </svg>
+      <div class="j" style="left:50%;top:91%"><div class="c" style="background:#d4901a"><span class="num">1</span><span class="edad">32a</span></div><div class="jn">Edouard</div><div class="ja">Mendy</div><div class="jc">Al-Ahli</div></div>
+      <div class="j" style="left:13%;top:74%"><div class="c" style="background:#2a5c8a"><span class="num">2</span><span class="edad">26a</span></div><div class="jn">Formose</div><div class="ja">Mendy</div><div class="jc">Bournemouth</div></div>
+      <div class="j" style="left:37%;top:74%"><div class="c" style="background:#2a5c8a"><span class="num">5</span><span class="edad">27a</span></div><div class="jn">Abdou</div><div class="ja">Diallo</div><div class="jc">RB Leipzig</div></div>
+      <div class="j" style="left:63%;top:74%"><div class="c" style="background:#2a5c8a"><span class="num">3</span><span class="edad">29a</span></div><div class="jn">Kalidou</div><div class="ja">Koulibaly</div><div class="jc">Al-Hilal</div></div>
+      <div class="j" style="left:87%;top:74%"><div class="c" style="background:#2a5c8a"><span class="num">22</span><span class="edad">25a</span></div><div class="jn">Ismail</div><div class="ja">Jakobs</div><div class="jc">Monaco</div></div>
+      <div class="j" style="left:20%;top:53%"><div class="c" style="background:#2a5c8a"><span class="num">8</span><span class="edad">28a</span></div><div class="jn">Nampalys</div><div class="ja">Mendy</div><div class="jc">Niza</div></div>
+      <div class="j est" style="left:50%;top:53%"><div class="c"><span class="num">6</span><span class="edad">30a</span></div><div class="si">★★★</div><div class="jn">Cheikhou</div><div class="ja">Kouyaté</div><div class="jc">Nottm Forest</div></div>
+      <div class="j" style="left:80%;top:53%"><div class="c" style="background:#2a5c8a"><span class="num">14</span><span class="edad">24a</span></div><div class="jn">Pape M.</div><div class="ja">Sarr</div><div class="jc">Tottenham</div></div>
+      <div class="j est" style="left:18%;top:28%"><div class="c"><span class="num">10</span><span class="edad">26a</span></div><div class="si">★★★</div><div class="jn">Ismaïla</div><div class="ja">Sarr</div><div class="jc">Crystal Palace</div></div>
+      <div class="j est" style="left:50%;top:25%"><div class="c"><span class="num">9</span><span class="edad">30a</span></div><div class="si">★★★</div><div class="jn">Sadio</div><div class="ja">Mané</div><div class="jc">Al-Nassr</div></div>
+      <div class="j" style="left:82%;top:28%"><div class="c" style="background:#2a5c8a"><span class="num">11</span><span class="edad">27a</span></div><div class="jn">Nicolas</div><div class="ja">Jackson</div><div class="jc">Chelsea</div></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function show(t){
+  document.querySelectorAll('.tab').forEach(e=>e.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(e=>e.classList.remove('on'));
+  document.querySelector('[onclick="show(\''+t+'\')"]').classList.add('on');
+  document.getElementById(t).classList.add('on');
+}
+</script>
+</body>
+</html>
