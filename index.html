@@ -9,11 +9,10 @@
 html,body{background:#0a0f1e;font-family:system-ui,sans-serif;color:#fff}
 body{display:flex;flex-direction:column;align-items:center}
 
-.hero{width:100%;background:#0a0f1e;border-bottom:1px solid rgba(255,255,255,.1);padding:14px 12px 10px;text-align:center;position:sticky;top:0;z-index:100}
-.hero-t{font-size:20px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#f5c518;margin-bottom:0}
+.hero-t{font-size:16px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#f5c518;text-align:center;padding:12px 0 8px}
 
-.layout{display:flex;width:100%;max-width:900px;gap:0;align-items:flex-start;padding:12px 0 2rem;overflow:hidden}
-.sidebar{width:68px;min-width:68px;flex-shrink:0;display:flex;flex-direction:column;gap:2px;padding:4px 2px;position:sticky;top:72px;max-height:calc(100vh - 80px);overflow-y:auto;scrollbar-width:none}
+.layout{display:flex;width:100%;max-width:900px;gap:0;align-items:flex-start;padding:4px 0 2rem;overflow:hidden}
+.sidebar{width:68px;min-width:68px;flex-shrink:0;display:flex;flex-direction:column;gap:2px;padding:4px 2px;position:sticky;top:8px;max-height:100vh;overflow-y:auto;scrollbar-width:none}
 .sidebar::-webkit-scrollbar{display:none}
 .stab{width:64px;min-height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);transition:all .15s;flex-shrink:0;padding:5px 4px}
 .stab:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
@@ -68,12 +67,8 @@ body{display:flex;flex-direction:column;align-items:center}
 <body>
 
 <div class="hero">
-  <div class="hero-t">&#9917; Mundial FIFA 2026</div>
-  <div class="ley" style="justify-content:center;margin:6px 0 0">
-    <div class="ley-i"><div class="ley-d" style="background:#f5c518;border-color:#f5c518"></div>Estrella</div>
-    <div class="ley-i"><div class="ley-d" style="background:#4a5568"></div>Titular</div>
-    <div class="ley-i"><div class="ley-d" style="background:#d4901a;border-color:#d4901a"></div>Portero</div>
-  </div>
+  <div class="hero-t">Equipos de FIFA</div>
+
 
 </div>
 
@@ -737,7 +732,14 @@ function buildPanel(code) {
     </div>`;
   }).join('');
 
-  return `<div class="campo">${LINES_SVG}${players}</div>`;
+  return `<div style="display:flex;flex-direction:column;align-items:center;width:100%">
+    <div class="campo">${LINES_SVG}${players}</div>
+    <div class="ley" style="justify-content:center;margin-top:10px">
+      <div class="ley-i"><div class="ley-d" style="background:#f5c518;border-color:#f5c518"></div>Estrella</div>
+      <div class="ley-i"><div class="ley-d" style="background:${t.out}"></div>Titular</div>
+      <div class="ley-i"><div class="ley-d" style="background:#d4901a;border-color:#d4901a"></div>Portero</div>
+    </div>
+  </div>`;
 }
 
 const COUNTRIES = [
