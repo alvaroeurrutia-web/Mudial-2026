@@ -77,7 +77,7 @@ body{display:flex;flex-direction:column;align-items:center}
 <body>
 
 <div class="hero">
-  <div class="hero-t">Equipos de FIFA</div>
+  <div class="hero-t" id="hero-t">Equipos de FIFA</div>
 
 
 </div>
@@ -92,6 +92,32 @@ body{display:flex;flex-direction:column;align-items:center}
 
 <script>
 const TEAMS = {
+  esp:{name:"España",form:"4-3-3",gk:"#d4901a",out:"#c60b1e",players:[
+    {n:"23",fn:"Unai",ln:"Simón",cl:"Athletic Club",age:29,pos:"91%","left":"50%",gk:true,desc:"Guardameta titular; destaca por su seguridad aérea y gran juego de pies."},
+    {n:"5",fn:"Marcos",ln:"Llorente",cl:"Atlético Madrid",age:31,pos:"74%","left":"87%",desc:"Lateral derecho de gran despliegue físico, velocidad y versatilidad táctica."},
+    {n:"22",fn:"Pau",ln:"Cubarsí",cl:"FC Barcelona",age:19,pos:"74%","left":"63%",desc:"Central moderno; asume la limpia salida de balón desde el fondo con madurez."},
+    {n:"14",fn:"Aymeric",ln:"Laporte",cl:"Al-Nassr",age:33,pos:"74%","left":"37%",desc:"Líder veterano de la zaga; aportando jerarquía, posicionamiento y solidez por aire."},
+    {n:"24",fn:"Marc",ln:"Cucurella",cl:"Chelsea",age:27,pos:"74%","left":"13%",desc:"Lateral izquierdo con alto ritmo de recuperación defensiva e intensa presión."},
+    {n:"16",fn:"Rodri",ln:"",cl:"Manchester City",age:30,pos:"55%","left":"25%",star:true,desc:"El pivote y ancla del mediocampo; dicta los tiempos, recupera y equilibra el bloque."},
+    {n:"20",fn:"Pedri",ln:"",cl:"FC Barcelona",age:23,pos:"55%","left":"50%",star:true,desc:"Motor creativo e interior encargado de romper líneas con pases filtrados."},
+    {n:"6",fn:"Mikel",ln:"Merino",cl:"Arsenal",age:30,pos:"55%","left":"75%",desc:"Volante mixto de ida y vuelta (box-to-box); clave en la presión y el juego físico."},
+    {n:"19",fn:"Lamine",ln:"Yamal",cl:"FC Barcelona",age:18,pos:"28%","left":"80%",star:true,desc:"Extremo derecho estelar; aporta desequilibrio individual, regate y desborde."},
+    {n:"9",fn:"Mikel",ln:"Oyarzabal",cl:"Real Sociedad",age:29,pos:"28%","left":"50%",desc:"Delantero centro con gran movilidad, juego asociativo y alta efectividad en el área."},
+    {n:"15",fn:"Álex",ln:"Baena",cl:"Villarreal",age:24,pos:"28%","left":"20%",desc:"Extremo por izquierda que tiende hacia el interior para buscar remates o asistir."},
+  ]},
+  uru:{name:"Uruguay",form:"4-4-2",gk:"#d4901a",out:"#5b9bd5",players:[
+    {n:"1",fn:"Fernando",ln:"Muslera",cl:"Galatasaray",age:40,pos:"91%","left":"50%",gk:true,desc:"Guardameta histórico y capitán; aporta experiencia y liderazgo bajo los tres palos."},
+    {n:"4",fn:"Guillermo",ln:"Varela",cl:"Flamengo",age:33,pos:"74%","left":"87%",desc:"Lateral derecho con alta proyección ofensiva y capacidad de marcaje en el retroceso."},
+    {n:"2",fn:"Sebastián",ln:"Cáceres",cl:"América",age:26,pos:"74%","left":"63%",desc:"Central físico; rápido en las coberturas y agresivo en el anticipo defensivo."},
+    {n:"16",fn:"Mathías",ln:"Olivera",cl:"Napoli",age:28,pos:"74%","left":"37%",desc:"Defensa polivalente; destaca por su gran despliegue en transiciones y juego aéreo."},
+    {n:"13",fn:"Juan Manuel",ln:"Sanabria",cl:"Atlético San Luis",age:26,pos:"74%","left":"13%",desc:"Lateral o carrilero izquierdo de gran recorrido, precisión en centros y marca batalladora."},
+    {n:"5",fn:"Manuel",ln:"Ugarte",cl:"Manchester United",age:25,pos:"55%","left":"25%",desc:"El destructor del mediocampo; encargado del quite de balón y la contención física."},
+    {n:"6",fn:"Rodrigo",ln:"Bentancur",cl:"Tottenham",age:29,pos:"55%","left":"50%",desc:"Mediocampo mixto con excelente visión, conducción elegante y salida clara."},
+    {n:"15",fn:"Federico",ln:"Valverde",cl:"Real Madrid",age:27,pos:"55%","left":"75%",star:true,desc:"Motor dinámico del equipo (box-to-box); destaca por su potente remate de larga distancia."},
+    {n:"11",fn:"Agustín",ln:"Canobbio",cl:"Athletico Paranaense",age:28,pos:"28%","left":"20%",desc:"Extremo derecho táctico; aporta enorme sacrificio en el retroceso y velocidad en banda."},
+    {n:"20",fn:"Maximiliano",ln:"Araújo",cl:"Sporting Lisboa",age:26,pos:"28%","left":"80%",star:true,desc:"Extremo zurdo desequilibrante; es la principal llave de gol en velocidad y desborde."},
+    {n:"19",fn:"Darwin",ln:"Núñez",cl:"Liverpool FC",age:27,pos:"28%","left":"50%",star:true,desc:"Referente de ataque; potente delantero centro que rompe al espacio y busca el remate."},
+  ]},
   nor:{name:"Noruega",form:"4-3-3",gk:"#d4901a",out:"#4a5568",players:[
     {n:"1",fn:"Ørjan",ln:"Nyland",cl:"Sevilla",age:35,pos:"91%","left":"50%",gk:true,desc:"Guardameta titular; encargado de detener el arsenal ofensivo francés."},
     {n:"16",fn:"Marcus",ln:"Pedersen",cl:"Torino",age:25,pos:"74%","left":"87%",desc:"Lateral derecho con gran proyección para frenar las internadas extremas."},
@@ -155,8 +181,10 @@ function buildPanel(code) {
 }
 
 const COUNTRIES = [
-  {c:'nor',n:'Noruega'},
+  {c:'esp',n:'España'},
   {c:'fra',n:'Francia'},
+  {c:'nor',n:'Noruega'},
+  {c:'uru',n:'Uruguay'},
 ];
 
 function buildSidebar(id, list) {
@@ -175,10 +203,11 @@ function show(code) {
   document.querySelectorAll('.stab').forEach(e=>e.classList.remove('on'));
   const t = document.getElementById('stab-'+code);
   if(t){ t.classList.add('on'); t.scrollIntoView({block:'nearest'}); }
+  document.getElementById('hero-t').textContent = TEAMS[code].name;
   document.getElementById("content").innerHTML = buildPanel(code);
 }
 
-show('nor');
+show('esp');
 
 function openPopup(fn, ln, cl, age, desc, star) {
   document.getElementById('popup-name').textContent = fn + ' ' + ln;
